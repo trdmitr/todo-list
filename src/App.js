@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
 import Mybutton from './UI/buttons/Mybutton';
+import TaskItem from './UI/components/TaskItem';
+import TaskJist from './UI/components/TaskJist';
 import MyInput from "./UI/inputs/MyInput";
 
 function App() {
   const [tasks, setTasks] = useState(
     [
-      { id: 1, check: false, body: "wgthtjfkfkdnnn 1" },
-      { id: 2, check: false, body: "lores ip summm 2" },
-      { id: 3, check: false, body: "zhhhhcjjjj d 3" }
+      { id: 1, check: false, body: "1 задача препервая" },
+      { id: 2, check: false, body: "2 задача незадача" },
+      { id: 3, check: false, body: "3 задача задач" }
     ]);
 
     const itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
@@ -22,9 +24,9 @@ function App() {
   }
   return (
     <div className="App">
-      <header>
+      {/* <header>
         <h1>Список задач</h1>
-      </header>
+      </header> */}
       {/* INPUT FIELD TO ENTER TASK AND DROPDOWN FILTER */}
       <form>
         <MyInput type="text" placeholder="Введите задачу" className="todo_input" />
@@ -39,17 +41,7 @@ function App() {
           </select>
         </div>
       </form>
-
-      <div className="todo_container">
-        <ul className="todo_list">
-          <div className="todo">
-            <li className="todo_item">1 задача</li><button className="complete_btn"><i className="fas fa-check" /></button><button className="delete_btn"><i className="fas fa-trash" /></button></div>
-          <div className="todo">
-            <li className="todo_item">2 задача</li><button className="complete_btn"><i className="fas fa-check" /></button><button className="delete_btn"><i className="fas fa-trash" /></button></div>
-          <div className="todo">
-            <li className="todo_item">3 задача</li><button className="complete_btn"><i className="fas fa-check" /></button><button className="delete_btn"><i className="fas fa-trash" /></button></div>
-        </ul>
-      </div>
+      <TaskItem tasks={tasks}/>
     </div>
   );
 }
