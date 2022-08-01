@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './App.css';
 import Mybutton from './UI/buttons/Mybutton';
 import TaskItem from './UI/components/TaskItem';
-import TaskJist from './UI/components/TaskJist';
 import MyInput from "./UI/inputs/MyInput";
 
 function App() {
@@ -17,10 +16,19 @@ function App() {
     localStorage.setItem('items', JSON.stringify(itemsArray))
     const data = JSON.parse(localStorage.getItem('items'))
 
-  const [value, setValue] = useState('');
+  const [body, setBody] = useState('');
+  const [check, setCheck] = useState(true)
   const addTask = (e) => {
     e.preventDefault();
-    console.log(value)
+    const newTask = {
+      id:Date.now(),
+      check: false,
+      body
+    }
+    // console.log(newTask, 'task :', ...tasks)
+    setTasks([...tasks, newTask])
+    setBody('')
+    setCheck(true)
   }
   return (
     <div className="App">
@@ -29,8 +37,12 @@ function App() {
       </header> */}
       {/* INPUT FIELD TO ENTER TASK AND DROPDOWN FILTER */}
       <form>
-        <MyInput type="text" placeholder="Введите задачу" className="todo_input" />
-        <Mybutton className="todo_button" type="submit">
+        <MyInput value={body}
+        onChange = {e => setBody(e.target.value)}
+         type="text" placeholder="Введите задачу" className="todo_input" />
+        <Mybutton
+        onClick={addTask}
+        className="todo_button" type="submit">
           <i className="fas fa-plus-square" />
         </Mybutton>
         <div className="select">
@@ -41,7 +53,7 @@ function App() {
           </select>
         </div>
       </form>
-      <TaskItem tasks={tasks}/>
+      <TaskItem tasks={tasks} title="Список задач"/>
     </div>
   );
 }
