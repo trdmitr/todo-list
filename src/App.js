@@ -7,9 +7,9 @@ import MyInput from "./UI/inputs/MyInput";
 function App() {
   const [tasks, setTasks] = useState(
     [
-      { id: 1, check: false, body: "1 задача препервая" },
-      { id: 2, check: false, body: "2 задача незадача" },
-      { id: 3, check: false, body: "3 задача задач" }
+      { id: 1, isCheck: false, body: "1 задача препервая" },
+      { id: 2, isCheck: false, body: "2 задача незадача" },
+      { id: 3, isCheck: false, body: "3 задача задач" }
     ]);
 
     const itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
@@ -17,18 +17,18 @@ function App() {
     const data = JSON.parse(localStorage.getItem('items'))
 
   const [body, setBody] = useState('');
-  const [check, setCheck] = useState(true)
+  // const [isCheck, setCheck] = useState(true)
   const addTask = (e) => {
     e.preventDefault();
     const newTask = {
       id:Date.now(),
-      check: false,
+      // isCheck: true,
       body
     }
     // console.log(newTask, 'task :', ...tasks)
     setTasks([...tasks, newTask])
     setBody('')
-    setCheck(true)
+    // setCheck(true)
   }
   return (
     <div className="App">
