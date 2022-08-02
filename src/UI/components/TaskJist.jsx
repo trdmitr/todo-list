@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 
 const TaskJist = (props) => {
-    // console.log ('props: ', props.task.isCheck)
+    console.log ('props: ', props.task.isCheck)
     const [isCheck, setCheck] = useState(false)
-    // setCheck(props.task.isCheck)
-    // console.log ('check: ', isCheck)
     return (
         <div className="todo_container">
             <ul className="todo_list">

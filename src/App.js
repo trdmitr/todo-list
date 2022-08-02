@@ -14,7 +14,7 @@ function App() {
 
     const itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : []
     localStorage.setItem('items', JSON.stringify(itemsArray))
-    const data = JSON.parse(localStorage.getItem('items'))
+    // const data = JSON.parse(localStorage.getItem('items'))
 
   const [body, setBody] = useState('');
   // const [isCheck, setCheck] = useState(true)
@@ -22,7 +22,7 @@ function App() {
     e.preventDefault();
     const newTask = {
       id:Date.now(),
-      // isCheck: true,
+      isCheck: true,
       body
     }
     // console.log(newTask, 'task :', ...tasks)
