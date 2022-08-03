@@ -28,7 +28,10 @@ function App() {
     // console.log(newTask, 'task :', ...tasks)
     setTasks([...tasks, newTask])
     setBody('')
-    // setCheck(true)
+    // setCheck(true) 
+  }
+  const removeTask = (task) => {
+    setTasks(tasks.filter(t => t.id !== task.id))
   }
   return (
     <div className="App">
@@ -53,7 +56,7 @@ function App() {
           </select>
         </div>
       </form>
-      <TaskItem tasks={tasks} title="Список задач"/>
+      <TaskItem remove={removeTask} tasks={tasks} title="Список задач"/>
     </div>
   );
 }

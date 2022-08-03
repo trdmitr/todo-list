@@ -10,7 +10,7 @@ const TaskJist = (props) => {
                     <li className={isCheck? "completedItem" : "todo_item"}>{props.task.body}</li>
                     <button className="complete_btn" onClick={() => setCheck(true)}><i className="fas fa-check" />
                     </button>
-                    <button className="delete_btn">
+                    <button className="delete_btn" onClick={() => props.remove(props.task)}>
                         <i className="fas fa-trash" />
                     </button>
                 </div>
