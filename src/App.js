@@ -19,7 +19,11 @@ function App() {
   const [body, setBody] = useState('');
   // const [isCheck, setCheck] = useState(true)
   const addTask = (e) => {
+    
     e.preventDefault();
+    if(body === ""){
+      return null
+  }
     const newTask = {
       id:Date.now(),
       isCheck: true,
